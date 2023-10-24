@@ -37,7 +37,7 @@ public class Main {
             }
         }
         if (wygrana == false){
-            System.out.println("Koniec dostępnych ruchow");
+            System.out.println("Koniec dostępnych ruchow a Twoja liczba to : " + szukana);
         }
         System.out.println("Koniec Gry!!!");
 
