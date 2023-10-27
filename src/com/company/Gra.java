@@ -14,7 +14,7 @@ public class Gra {
 // 3. Nazwa jego musi być taka sama jak nazwa klasy
 // 4. Może przyjmować parametry ale nie musi
 
-    public Gra(){
+    public Gra(){ // Gra_
         this.nazwa = "Gra Podstawowa";
         this.liczba_iter = 10;
         this.ogr_do = 0;
@@ -24,8 +24,16 @@ public class Gra {
     }
 
 
-// Metod o tej samej nazwie może być TYLKO jEDNA !!!!!!!
-    public Gra(int _liczba_iter,int _ogr_do, int _ogr_go){
+    public void print(){
+        System.out.println("==================================================");
+        System.out.print(this.toString());
+        System.out.println("----------------------------------------------------\n");
+    }
+
+
+// Metod o tej samej nazwie może być TYLKO jEDNA
+// !!!!!!!
+    public Gra(int _liczba_iter,int _ogr_do, int _ogr_go){  //Gra_int_int_int
         this.nazwa = "Gra Zaawansowana";
         this.liczba_iter = _liczba_iter;
         this.ogr_do = _ogr_do;
@@ -51,9 +59,9 @@ public class Gra {
     public static void main(String[] args) {
 
         Gra testGra1 = new Gra();
-        System.out.println(testGra1.toString());
+        testGra1.print();
 
         Gra testGra2 = new Gra(100,0,1000);
-        System.out.println(testGra2.toString());
+        testGra2.print();
     }
 }
