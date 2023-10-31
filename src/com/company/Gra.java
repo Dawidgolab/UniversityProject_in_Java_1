@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Random;
+
 public class Gra {
 
     private String nazwa;
@@ -9,7 +11,7 @@ public class Gra {
     private int szukana;
 
 // Konstruktor :
-// 1. Konstruktor jest obowiązkowy, a jak go nie ma
+// 1. Konstruktor jest obowiązkowy, a jak go nie ma tworzony jest domyślny
 // 2. Musi być publiczną metodą ,
 // 3. Nazwa jego musi być taka sama jak nazwa klasy
 // 4. Może przyjmować parametry ale nie musi
@@ -37,10 +39,17 @@ public class Gra {
         this.nazwa = "Gra Zaawansowana";
         this.liczba_iter = _liczba_iter;
         this.ogr_do = _ogr_do;
-        this.ogr_go = _ogr_go;
-        this.szukana = 3;
+        this.setOgr_go(_ogr_go);// <---- this.ogr_go = _ogr_go;
+        this.szukana = this.losuj();
     }
 
+
+    private int losuj(){
+        //Random rnd = new Random();
+        //return rnd.nextInt(this.ogr_do,this.ogr_go);
+        return new Random().nextInt(this.ogr_do,this.ogr_go);
+
+    }
 
     @Override
     public String toString() {
@@ -55,6 +64,21 @@ public class Gra {
     }
 
 
+// ** Hermetyzacja - określanie zakresu do którego pozwalamy się dostawać do naszej klasy/gettery i settery/
+
+    public int getOgr_go() {
+        return ogr_go;
+    }
+
+// setter słóży do rozwiązywania takich problemów jak w tym przypadku ograniczenie gorne
+    public void setOgr_go(int _ogr_go) {
+        if (_ogr_go <= this.ogr_do){
+            this.ogr_go = ogr_do + 100;
+        }else{
+            this.ogr_go = _ogr_go;
+        }
+    }
+
     // Metoda main gdzie testujemy różne funkcje z Klasy Gra
     public static void main(String[] args) {
 
@@ -63,5 +87,8 @@ public class Gra {
 
         Gra testGra2 = new Gra(100,0,1000);
         testGra2.print();
+
+        Gra testGra3 = new Gra(100,10,0);
+        testGra3.print();
     }
 }
