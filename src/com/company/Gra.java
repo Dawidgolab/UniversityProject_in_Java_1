@@ -51,6 +51,18 @@ public class Gra {
 
     }
 
+    public String toStringHtml() {
+        String s = "<div>";
+        s += "Nazwa: " + this.nazwa + "<br>";
+        s += "Liczba iteracji: " + this.liczba_iter + "<br>"; // this = wskazuje nam element klasy
+        s += "Ograniczenie dolne: " + this.ogr_do + "<br>";
+        s += "Ograniczenie gorne: " + this.ogr_go + "<br>";
+        s += "Szukana wartosc: " + this.szukana + "<br></div>";
+        //-----------------------------
+        return s;
+    }
+
+
     @Override
     public String toString() {
         String s = "";
