@@ -2,6 +2,13 @@ package com.company;
 
 import java.util.Random;
 
+
+// Konstruktor - Jest to specjalna metoda, która ma tę samą nazwę co klasa i jest używana do inicjalizacji nowych obiektów:
+// 1. Konstruktor jest obowiązkowy, a jak go nie ma tworzony jest domyślny
+// 2. Musi być publiczną metodą ,
+// 3. Nazwa jego musi być taka sama jak nazwa klasy
+// 4. Może przyjmować parametry ale nie musi
+
 public class Gra {
 
     private String nazwa;
@@ -10,19 +17,21 @@ public class Gra {
     private int ogr_go;
     private int szukana;
 
-// Konstruktor :
-// 1. Konstruktor jest obowiązkowy, a jak go nie ma tworzony jest domyślny
-// 2. Musi być publiczną metodą ,
-// 3. Nazwa jego musi być taka sama jak nazwa klasy
-// 4. Może przyjmować parametry ale nie musi
+    private int stan = -1;
 
-    public Gra(){ // Gra_
-        this.nazwa = "Gra Podstawowa";
+    public Gra(){ //Gra_
+        this.nazwa = "Gra podstawowa.";
         this.liczba_iter = 10;
         this.ogr_do = 0;
         this.ogr_go = 100;
-        this.szukana = 45;
+        this.szukana = this.losuj();
+    }
 
+    public String nextStep (String param){
+        if (param != "") {
+            int n = Integer.parseInt(param);
+        }
+        return "Jestem" + param;
     }
 
 
@@ -43,11 +52,28 @@ public class Gra {
         this.szukana = this.losuj();
     }
 
+// ** Hermetyzacja - określanie zakresu do którego pozwalamy się dostawać do naszej klasy/gettery i settery/
+
+    // Oczywiście, gettery i settery są metodami używanymi w Javie do dostępu do pól prywatnych w klasie z zewnątrz klasy. (np przez użytkownika)
+    // getter odczytuje prywatne dane uzytwkownika
+    // setter modyfikuje dane
+
+    public int getOgr_go() {
+        return ogr_go;
+    }
+    public void setOgr_go(int _ogr_go) {
+        if (_ogr_go <= this.ogr_do){
+            this.ogr_go = this.ogr_do + 100;
+        }else{
+            this.ogr_go = _ogr_go;
+        }
+    }
+
 
     private int losuj(){
-        //Random rnd = new Random();
-        //return rnd.nextInt(this.ogr_do,this.ogr_go);
-        return new Random().nextInt(this.ogr_do,this.ogr_go);
+        Random rnd = new Random();
+        return rnd.nextInt(this.ogr_do,this.ogr_go);
+        //return new Random().nextInt(this.ogr_do,this.ogr_go);
 
     }
 
@@ -76,20 +102,6 @@ public class Gra {
     }
 
 
-// ** Hermetyzacja - określanie zakresu do którego pozwalamy się dostawać do naszej klasy/gettery i settery/
-
-    public int getOgr_go() {
-        return ogr_go;
-    }
-
-// setter słóży do rozwiązywania takich problemów jak w tym przypadku ograniczenie gorne
-    public void setOgr_go(int _ogr_go) {
-        if (_ogr_go <= this.ogr_do){
-            this.ogr_go = ogr_do + 100;
-        }else{
-            this.ogr_go = _ogr_go;
-        }
-    }
 
     // Metoda main gdzie testujemy różne funkcje z Klasy Gra
     public static void main(String[] args) {
@@ -104,3 +116,4 @@ public class Gra {
         testGra3.print();
     }
 }
+

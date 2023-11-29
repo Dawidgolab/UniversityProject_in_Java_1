@@ -1,5 +1,4 @@
 package com.company;
-
 import com.company.Gra;
 
 // Server
@@ -20,27 +19,39 @@ public class Server {
 
         HttpServer server = HttpServer.create(new InetSocketAddress(8080),0); // localhost:8080
         server.createContext("/home",new MyHandler());
+        System.out.println(">> Server start");
         server.start(); // Uruchomienie serwera
-
-
     }
 
 
     static class MyHandler implements HttpHandler{ // implementujemy classe HttpHandler
         @Override
         public void handle(HttpExchange exchange)throws  IOException{
-            String response = "<html>" + //Tworzenie ciągu znaków response zawierającego kod HTML strony.
+
+            String query = exchange.getRequestURI().getQuery();
+            System.out.println(query);
+            String param = "";
+            if (query != null) {
+                param = query.substring(2);
+            }
+            System.out.println("Param: " + param);
+
+          //  System view = Server.gra.nextStep(param);
+
+
+
+            String response = "<html>" +
                     "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">" +
                     "<div class=\"w3-panel w3-red\"><h1>Gra</h1></div>" +
-                    "<div class=\"w3-panel w3-green w3-padding-16\">" + Server.gra.toStringHtml() + "</div>" +
-                    "<div class=\"w3-panel w3-blue w3-padding\" ><input type = \"number\" id = \"id01\" ></div>" +
-                    "<div class=\"w3-panel w3-blue w3-padding\"><button class = \"w3-button w3-orange w3-round\" onclick= \"dalej()\" >Dalej</button></div>" +
+                    "<div class=\"w3-panel w3-green w3-padding-16\">" + Server.gra.toStringHtml()  + "</div>" +
+                    "<div class=\"w3-panel w3-blue w3-padding\"><input type=\"number\" id=\"id01\"></div>" +
+                    "<div class=\"w3-panel w3-blue w3-padding\"><button class=\"w3-button w3-orange w3-round\"  onclick=\"dalej()\">Dalej</button></div>" +
                     "<script>" +
                     "function dalej(){ " +
-                    "var nextUrl = \"/home?n=\" ; " +
+                    "var nextUrl = \"/home?n=\" ;" +
                     "var number = document.getElementById(\"id01\").value; " +
                     "window.location.href = nextUrl + number;" +
-                    "}" +
+                    "}"+
                     "</script>" +
                     "</html>";
 
@@ -50,14 +61,5 @@ public class Server {
             os.close();
         }
     }
-
-
-
-
-
-
-
-
-
 
 }
