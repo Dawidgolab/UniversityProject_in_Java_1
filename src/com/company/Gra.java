@@ -27,11 +27,29 @@ public class Gra {
         this.szukana = this.losuj();
     }
 
+    private void init(){
+        this.stan = -1;
+        this.liczba_iter = 10;
+        this.szukana = this.losuj();
+    }
+
     public String nextStep (String param){
-        if (param != "") {
-            int n = Integer.parseInt(param);
+        if (this.stan == 4 || this.stan == 3){
+            this.init();
         }
-        return "Jestem" + param;
+        this.liczba_iter -= 1;
+        if (this.liczba_iter <= 0){
+            this.stan = 4;
+        }else {
+
+            if (param != "") {
+                int n = Integer.parseInt(param);
+                if (n < this.szukana) this.stan = 1;
+                if (n > this.szukana) this.stan = 2;
+                if (n == this.szukana) this.stan = 3;
+            }
+        }
+        return this.toStringHtml();
     }
 
 
@@ -84,7 +102,9 @@ public class Gra {
         s += "Ograniczenie dolne: " + this.ogr_do + "<br>";
         s += "Ograniczenie gorne: " + this.ogr_go + "<br>";
         s += "Szukana wartosc: " + this.szukana + "<br></div>";
-        //-----------------------------
+        s += "<div class =\"w3-panel w3-blue\">";
+        s += "Stan Gry: " + this.stan;
+        s += "</div>";
         return s;
     }
 

@@ -28,6 +28,7 @@ public class Server {
         @Override
         public void handle(HttpExchange exchange)throws  IOException{
 
+            //wyświetlenie parametrów na konsoli
             String query = exchange.getRequestURI().getQuery();
             System.out.println(query);
             String param = "";
@@ -35,17 +36,17 @@ public class Server {
                 param = query.substring(2);
             }
             System.out.println("Param: " + param);
-
           //  System view = Server.gra.nextStep(param);
 
-
+            String view = Server.gra.nextStep(param);
 
             String response = "<html>" +
                     "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">" +
                     "<div class=\"w3-panel w3-red\"><h1>Gra</h1></div>" +
-                    "<div class=\"w3-panel w3-green w3-padding-16\">" + Server.gra.toStringHtml()  + "</div>" +
+                    "<div class=\"w3-panel w3-green w3-padding-16\">" + view + "</div>" +
                     "<div class=\"w3-panel w3-blue w3-padding\"><input type=\"number\" id=\"id01\"></div>" +
                     "<div class=\"w3-panel w3-blue w3-padding\"><button class=\"w3-button w3-orange w3-round\"  onclick=\"dalej()\">Dalej</button></div>" +
+                 // Javascript - przechwytywania wartości wprowadzonej przez użytkownika do pola tekstowego i przekazania jej do nowego adresu URL w przeglądarce
                     "<script>" +
                     "function dalej(){ " +
                     "var nextUrl = \"/home?n=\" ;" +
