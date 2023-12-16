@@ -1,7 +1,64 @@
 //
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by FernFlower decompiler)
-//
+
+//Theory
+/*
+Obiekt - coś to pojawia się w pamięci komputera =! Klasa - coś co się nie pojawia w pamięci
+
+Klasa:
+- jest to cos ogolnego jak np laptop
+
+Obiekt:
+- obiekt to konkretny element, który powstał na podstawie klasy.
+- a obiekt klasy 'laptop' to jest np 'mojlaptop' -> czyli cos konkretnego
+- aby działał musimmy go stowrzyc słowem New(np  Server.gra = new Gra1(); | Random random = new Random..)
+!Na przykład, jeśli mamy klasę "Osoba" z atrybutami jak "imię" i "wiek", to konkretna osoba,
+jak "Anna", "Jan" czy "Marcin", będący instancjami tej klasy, to właśnie obiekty
+
+
+L: Zmienna ,która będzię w stanie sterować konkrentnie wskazanymi obiektami | P: tworzenie obiektu z 'new'
+- obiekty są konstruowane według konstruktora(który zawsze musi być)
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+Metoda:
+
+- Metoda statyczna w Javie jest specjalnym rodzajem metody, która jest związana z klasą,
+a nie z konkretnym obiektem tej klasy. Metody statyczne są wywoływane za pośrednictwem nazwy klasy,
+a nie przez instancję (obiekt) klasy.
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+Nadpisanie metody:
+-klasa dziedziczy pewne metody od innej klasy, ale czasami chcesz zmienić sposób,
+w jaki ta metoda działa, żeby lepiej pasowała do nowej klasy.
+To właśnie nadpisanie metody – modyfikowanie sposobu działania metody, która jest dziedziczona z klasy nadrzędnej,
+aby lepiej odpowiadała potrzebom klasy dziedziczącej.
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+Przeciążenie metody:
+- to mechanizm w języku programowania, który pozwala tworzyć kilka metod o tej samej nazwie,
+ale różniących się listą parametrów
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+private - nikt z zewnatrz nie ma do tego dostepu
+public - publiczny dostep
+/////////////////////////////////////////////////////////////////////////////////////////////
+getter i setter:
+
+-Getter służy do pobierania (czytania) wartości zmiennej. Jest jak okienko,
+przez które możesz zobaczyć, co znajduje się wewnątrz zmiennej.
+
+- Setter jest używany do zmiany wartości zmiennej. Jest jak magiczna rączka,
+ która pozwala zmienić zawartość zmiennej na coś nowego.
+ */
+
+
+
+
+
 
 package com.company;
 
